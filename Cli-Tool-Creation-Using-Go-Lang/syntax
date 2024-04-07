@@ -2,5 +2,8 @@
 #  flag.String(“flag-name”, “defualt-value-of-flag”, “Describe about you flag”)
 
  to print description of flags run go file with flag that havent mentioned in our file it simply desplay your flags and description
- 
-prashant
+
+# flag.Parse()
+After defining your flags, you need to parse them using the `flag. Parse()` function. This function reads the command-line arguments, extracts the flag values, and stores them in the variables you defined earlier.
+
+

@@ -1,0 +1,68 @@
+
+
+in cobra 
+
+main.go :- we have main .go file where our main function exist
+
+        package main
+
+        import "day06/cobra/cmd"
+
+        func main() {
+            cmd.Execute()
+        }
+
+
+root.go :- then we have root.go where we define information about your command line application 
+
+            package cmd
+
+            import (
+                "fmt"
+                "os"
+
+                "github.com/spf13/cobra"
+            )
+
+            var rootCmd = &cobra.Command{
+                Use:   "mycli",
+                Short: "My CLI Application",
+                Long:  `My CLI Application is a simple demonstration of Cobra in Go.`,
+            }
+
+            func Execute() {
+                if err := rootCmd.Execute(); err != nil {
+                    fmt.Println(err)
+                    os.Exit(1)
+                }
+            }
+
+            func init() {
+                // Here you will define your flags and configuration settings.
+            }
+
+flag1.go :- here define our logic and flags define over here we need to add that in root command which is defined in root.go
+
+    # flag1.go file 
+
+            package cmd
+
+            import (
+                "fmt"
+                "strings"
+
+                "github.com/spf13/cobra"
+            )
+
+            var printCmd = &cobra.Command{
+                Use:   "print [string to print]",
+                Short: "Print anything to the screen",
+                Args:  cobra.MinimumNArgs(1),
+                Run: func(cmd *cobra.Command, args []string) {
+                    fmt.Println("Print: " + strings.Join(args, " "))
+                },
+            }
+
+            func init() {
+                rootCmd.AddCommand(printCmd)
+            }
