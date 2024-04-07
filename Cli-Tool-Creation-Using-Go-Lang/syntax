@@ -1,0 +1,5 @@
+
+#  flag.String(“flag-name”, “defualt-value-of-flag”, “Describe about you flag”)
+
+ to print description of flags run go file with flag that havent mentioned in our file it simply desplay your flags and description
+ 
